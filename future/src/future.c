@@ -1,47 +1,45 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
-#define H 1000000000
 
-//values.txt
-        //
-        //
+
 int main(){
-    float *N = malloc(H * sizeof(float));
-    printf("hi\n");
-    if(N==NULL){
-        fprintf(stderr, "error\n");
+    char fname[20];
+    scanf("%s",fname);
+    FILE *file = fopen(fname, "r");
+    if(file == NULL){
+        printf("error\n");
         return 1;
     }
-    printf("hi\n");
-    char *M;
-    printf("hi\n");
-    scanf("%s", M);
-    printf("hi\n");
-    FILE *file = fopen("test69.txt", "r");
-    printf("hi\n");
-    
-    int j = 1;
-    printf("hi\n");
-    int i = 0;
-    printf("hi\n");
-    while( j > 0){
-        printf("hi\n");
-        fscanf(file, "%f", &N[j]);
-        printf("hi\n");
-        if(fscanf(file, "%f", &N[j]) != EOF){
-            printf("hi\n");
-            j++;
-            printf("hi\n");
-            i++;
-            printf("hi\n");
+    float z = 0;
+    float y = 0;
+    float avrg;
+    float ttl = 0;
+    int *i;
+    int *M = malloc(sizeof(int));
+    char name[20];
+    scanf("%s",name);
+    if(strcmp(name, "window") != 0){
+        scanf("%d", M);
+        for(i = 0; i < M; i++){
+            while(fscanf(file,"%f", &y) != EOF){
+                ttl = ttl + y;
+                z ++;
+            }
         }
-        else{
-            printf("hi\n");
-            j = 0;
-        }
-        printf("hi\n");
     }
-    printf("hi\n");
-    free(N);
+    else{
+        printf("ho");
+        int t = 0;
+        for(i = 0; t < 2; t++){
+            while(fscanf(file,"%f", &y) != EOF){
+                ttl = ttl + y;
+                z ++;
+            }
+        }
+    }
+
+    avrg = ttl / z;
+    printf("The Simple Moving Average is :%.2f\n", avrg);
     fclose(file);
 }
